@@ -12,10 +12,10 @@ void inicializa_matriz( MatrizDinamica *p, int l, int c ){
 		p->dados[i] = calloc( c, sizeof(int) );
 		
 		p->dados[i] = malloc( sizeof(int) * c );
-		for( j = 0 ; j < c ; j++)
-			p->dados[i][j] = 0;
-		
-	}
+	}	
+	// 	for( j = 0 ; j < c ; j++){ 
+	// 		// p->dados[i][j] = 0;
+	// }
 }
 
 void mostra_matriz( MatrizDinamica m ){
