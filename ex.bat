@@ -1,1 +1,1 @@
-gcc main.c fila.c matriz.c -o a
+gcc main.c fila.c matriz.c celula.c -o a

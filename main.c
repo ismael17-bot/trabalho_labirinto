@@ -3,67 +3,71 @@
 #include <string.h>
 #include "biblioteca_fila.h"
 #include "biblioteca_matriz.h"
+#include "biblioteca_celula.h"
 
-void preencheLinhaColuna(int *l,int *c);
+
 
 int main(int argc, char const *argv[])
 {
-    // MatrizDinamica m1;
-    // inicializa_matriz(&m1,7,6);
-    // mostra_matriz(m1);
-
     int l,c;
     printf("Digite a quantidade de linhas:\n");
-    sscanf("%d",&l);
+    scanf("%d",&l);
     printf("Digite a quantidade de colunas:\n");
-    sscanf("%d",&c);
+    scanf("%d",&c);
 
     MatrizDinamica caminho;
-    MatrizDinamica visao;
+    MatrizDinamica status;
+	FilaGenerica fila;
 
-	inicializa_matriz(&caminho,l,c);
-	inicializa_matriz(&visao,l,c);
-    preencheLinhaColuna(&l,&c);
+	//inicializaçao das matrizes 
+	inicializa_matriz_caminho(&caminho,l,c);
+	inicializa_matriz_status(&status,l,c);
+	
+	//inicializaçao da fila
+	inicializa_fila(&fila,30,4);
 
-	srand(time(NULL));
+	//inicialmente deicarei a inicializaçao da celula padrao
+	Celula inicio;
+	Celula final;
+
+	celula(&inicio,0,0,0);
+	celula(&final,4,4,0);
+
+	printf ("\nDados da celula inicio");
+	mostrar_celula(inicio);
+	printf ("Dados da celula final");
+	mostrar_celula(final);
+
+	modifica_matriz(&status,inicio.linha,inicio.coluna,5);
+	modifica_matriz(&status,final.linha,final.coluna,5);
+
+	//preenche a matriz caminho randomicamente 
 	for (int i = 0; i < l; ++i){
 	    for (int j = 0; j < c; ++j){
-	        char a[5] = {' ','\0'};
-			if((rand() % 100) < 20){
-			    strcpy(a,"[ ]");
+			int a = 1;
+			if((rand() % 100) < 30){
+				a=0;
 			}
-			modifica_matriz(&caminho,i,j,&a);
+			modifica_matriz(&caminho,i,j,a);
 		}
 	}
+	printf("linhas:%d +++ colunas:%d\n\n\n",l,c );
+
+	//mostra o labirinto 
+	mostra_matriz(caminho);
+
+	//inicializa status
+	mostra_matriz(status);
 
 
 
-    
+
+	//desaloca as matrizes 
+	desaloca_matriz(&caminho);
+	desaloca_matriz(&status);
+	desaloca_fila(&fila);
+
+
     return 0;
-}
-
-
-void preencheLinhaColuna(int *l,int *c){
-	char auxChar[5];
-	int aux;
-	do{
-		printf("Qual o numero de linhas do mapa:\n");
-	    gets(auxChar);
-	    aux = validaNumero(auxChar);
-	    if(aux){
-	        *l = atoi(auxChar);
-	    }else
-			printf("Digite um valor valido\n");
-	} while (!aux);
-
-	do{
-		printf("Qual o numero de colunas do mapa:\n");
-	    gets(auxChar);
-	    aux = validaNumero(auxChar);
-	    if(aux){
-	        *c = atoi(auxChar);
-	    }else
-	    	printf("Digite um valor valido\n");
-	} while (!aux);
 }
 

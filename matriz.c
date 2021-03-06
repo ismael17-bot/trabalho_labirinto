@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void inicializa_matriz( MatrizDinamica *p, int l, int c ){
+void inicializa_matriz_caminho( MatrizDinamica *p, int l, int c ){
 	p->linhas = l;
 	p->colunas = c;
 	
@@ -13,9 +13,21 @@ void inicializa_matriz( MatrizDinamica *p, int l, int c ){
 		
 		p->dados[i] = malloc( sizeof(int) * c );
 	}	
-	// 	for( j = 0 ; j < c ; j++){ 
-	// 		// p->dados[i][j] = 0;
-	// }
+}
+void inicializa_matriz_status( MatrizDinamica *p, int l, int c ){
+	p->linhas = l;
+	p->colunas = c;
+	
+	p->dados = malloc( sizeof(int*) * l );
+	int i, j;
+	for( i = 0 ; i < l ; i++ ){
+		p->dados[i] = calloc( c, sizeof(int) );
+		
+		p->dados[i] = malloc( sizeof(int) * c );
+		for( j = 0 ; j < c ; j++)
+			p->dados[i][j] = 0;
+	
+	}
 }
 
 void mostra_matriz( MatrizDinamica m ){
@@ -59,13 +71,16 @@ int compara_matrizes( MatrizDinamica a, MatrizDinamica b ){
 	return 1; // Verdadeiro, pois é tudo igual (dimensões e valores)
 }
 
-int preenche_matriz( MatrizDinamica m ){
-	int i, j;
-
-	for( i = 0 ; i < m.linhas; i++ ){
-		for( j = 0; j < m.colunas ; j++ ){ 
-			scanf("%d ", &m.dados[i][j]);
-    }
-	}
-}
+// int preenche_matriz( MatrizDinamica m ){
+	
+// 	for (int i = 0; i < l; ++i){
+// 	    for (int j = 0; j < c; ++j){
+// 			int a = 1;
+// 			if((rand() % 100) < 30){
+// 				a=0;
+// 			}
+// 			modifica_matriz(&caminho,i,j,a);
+// 		}
+// 	}
+// }
 

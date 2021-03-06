@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "biblioteca_fila.h": "c"
+        "biblioteca_fila.h": "c",
+        "biblioteca_celula.h": "c"
     }
 }
