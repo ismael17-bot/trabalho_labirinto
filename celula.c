@@ -8,7 +8,7 @@ void celula(Celula *c,int l,int col, int d){
 	c->dist = d;
 }
 
-int compara_celula(Celula a,Celula b){
+int comparaCelula(Celula a,Celula b){
 	return (a.linha==b.linha && b.coluna==a.coluna);
 }
 

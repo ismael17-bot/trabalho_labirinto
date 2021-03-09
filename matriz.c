@@ -71,16 +71,14 @@ int compara_matrizes( MatrizDinamica a, MatrizDinamica b ){
 	return 1; // Verdadeiro, pois é tudo igual (dimensões e valores)
 }
 
-// int preenche_matriz( MatrizDinamica m ){
-	
-// 	for (int i = 0; i < l; ++i){
-// 	    for (int j = 0; j < c; ++j){
-// 			int a = 1;
-// 			if((rand() % 100) < 30){
-// 				a=0;
-// 			}
-// 			modifica_matriz(&caminho,i,j,a);
-// 		}
-// 	}
-// }
+int get_matriz( MatrizDinamica p, int lin, int col, int *valor){
+	if( lin >= p.linhas || col > p.colunas )
+		return ERRO_COORDENADA_INVALIDA;
+		
+	 *valor = p.dados[lin][col] ;
+
+	return 1; // Sucesso.
+}
+
+
 

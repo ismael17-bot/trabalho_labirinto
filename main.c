@@ -5,8 +5,6 @@
 #include "biblioteca_matriz.h"
 #include "biblioteca_celula.h"
 
-
-
 int main(int argc, char const *argv[])
 {
     int l,c;
@@ -26,9 +24,10 @@ int main(int argc, char const *argv[])
 	//inicializaçao da fila
 	inicializa_fila(&fila,30,4);
 
-	//inicialmente deicarei a inicializaçao da celula padrao
+	//inicialmente deiarei a inicializaçao da celula padrao
 	Celula inicio;
 	Celula final;
+	Celula C;
 
 	celula(&inicio,0,0,0);
 	celula(&final,4,4,0);
@@ -58,16 +57,33 @@ int main(int argc, char const *argv[])
 
 	//inicializa status
 	mostra_matriz(status);
+	
+	inserir(&fila,&inicio);
+	int achou = 0;
+	int dist = 0;
 
+	while (!fila_vazia(fila) && !achou){
+		remover(&fila,&C);
+		if (C.linha==final.linha && C.coluna==final.coluna)
+		{
+			achou=1;
+		}else{
 
-
+		}
+		
+	}
 
 	//desaloca as matrizes 
 	desaloca_matriz(&caminho);
 	desaloca_matriz(&status);
 	desaloca_fila(&fila);
 
-
     return 0;
 }
+
+void valida_adjacente (int l, int c,int dist, MatrizDinamica *caminho, MatrizDinamica *status){
+	int auxi;
+	get_matriz(caminho,)
+}
+
 

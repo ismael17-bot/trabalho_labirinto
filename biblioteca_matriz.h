@@ -7,6 +7,7 @@ typedef struct{
 
 
 // int preenche_matriz( MatrizDinamica m);
+int get_matriz( MatrizDinamica p, int lin, int col, int *valor);
 void inicializa_matriz_caminho( MatrizDinamica *p, int l, int c );
 void inicializa_matriz_status( MatrizDinamica *p, int l, int c );
 void mostra_matriz( MatrizDinamica m );
