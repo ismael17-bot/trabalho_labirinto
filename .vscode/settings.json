@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "biblioteca_fila.h": "c",
-        "biblioteca_celula.h": "c"
-    }
+        "biblioteca_celula.h": "c",
+        "biblioteca_matriz.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }

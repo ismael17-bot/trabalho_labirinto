@@ -1,4 +1,7 @@
+#include "biblioteca_celula.h"
 #include "biblioteca_matriz.h"
+
+
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -51,7 +54,7 @@ void desaloca_matriz( MatrizDinamica *p ){
 }
 
 int modifica_matriz( MatrizDinamica *p, int lin, int col, int valor){
-	if( lin >= p->linhas || col > p->colunas )
+	if( lin >= p->linhas || col > p->colunas || lin < 0 || col < 0)
 		return ERRO_COORDENADA_INVALIDA;
 		
 	p->dados[lin][col] = valor;
@@ -68,17 +71,24 @@ int compara_matrizes( MatrizDinamica a, MatrizDinamica b ){
 			if( a.dados[i][j] != b.dados[i][j] )
 				return 0; // Falso, pois há pelo menos um valor diferente.
 	
-	return 1; // Verdadeiro, pois é tudo igual (dimensões e valores)
+	return 1; 
 }
 
-int get_matriz( MatrizDinamica p, int lin, int col, int *valor){
-	if( lin >= p.linhas || col > p.colunas )
+int get_matriz( MatrizDinamica *p, int lin, int col,int *valor){
+	if( lin >= p->linhas || col > p->colunas || lin < 0 || col < 0)
 		return ERRO_COORDENADA_INVALIDA;
-		
-	 *valor = p.dados[lin][col] ;
+	
+	*valor = p->dados[lin][col] ;
 
 	return 1; // Sucesso.
 }
 
+// int get_celula_matriz( MatrizDinamica *p, int lin, int col, Celula *c){
+// 	if( lin >= p->linhas || col > p->colunas || lin < 0 || col < 0)
+// 		return ERRO_COORDENADA_INVALIDA;
+// 	get_matriz(p,lin,col,&c->dist);
+// 	cria_celula(c,lin,col, c->dist);
+// 	return 1; 
+// }
 
 
